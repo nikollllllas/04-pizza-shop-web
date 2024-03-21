@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from 'react-router-dom'
 
 export function AppLayout() {
-  return(
+  return (
     <div>
       <h1>Cabeçalho</h1>
 
