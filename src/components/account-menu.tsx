@@ -13,18 +13,20 @@ import { useQuery } from '@tanstack/react-query'
 import { getProfile } from '@/api/get-profile'
 import { getManagedRestaurant } from '@/api/get-managed-restaurant'
 import { Skeleton } from './ui/skeleton'
-import { Dialog, DialogTrigger } from '@radix-ui/react-dialog'
+import { Dialog, DialogTrigger } from './ui/dialog'
 import { StoreProfileDialog } from './store-profile-dialog'
 
 export function AccountMenu() {
   const { data: profile, isLoading: isLoadingProfile } = useQuery({
     queryKey: ['profile'],
-    queryFn: getProfile
+    queryFn: getProfile,
+    staleTime: Infinity,
   })
 
   const { data: managedRestaurant, isLoading: isLoadingManagedRestaurant } = useQuery({
     queryKey: ['managed-restaurant'],
-    queryFn: getManagedRestaurant
+    queryFn: getManagedRestaurant,
+    staleTime: Infinity,
   })
 
   return (
