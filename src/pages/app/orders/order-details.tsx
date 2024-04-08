@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { OrderStatus } from './order-status'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { OrderDetailsSkeleton } from './order-details-skeleton'
 
 export interface OrderDetailsProps {
   orderId: string
@@ -29,7 +30,7 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
         <DialogDescription>Detalhes do Pedido</DialogDescription>
       </DialogHeader>
 
-      {order && (
+      {order ? (
         <div className='space-y-6'>
           <Table>
             <TableBody>
@@ -81,19 +82,19 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                 return (
                   <TableRow key={item.id}>
                     <TableCell>{item.product.name}</TableCell>
-                    <TableHead className='text-right'>{item.quantity}</TableHead>
-                    <TableHead className='text-right'>
+                    <TableCell className='text-right'>{item.quantity}</TableCell>
+                    <TableCell className='text-right'>
                       {(item.priceInCents / 100).toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL'
                       })}
-                    </TableHead>
-                    <TableHead className='text-right'>
+                    </TableCell>
+                    <TableCell className='text-right'>
                       {((item.priceInCents * item.quantity) / 100).toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL'
                       })}
-                    </TableHead>
+                    </TableCell>
                   </TableRow>
                 )
               })}
@@ -111,6 +112,8 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
             </TableFooter>
           </Table>
         </div>
+      ) : (
+        <OrderDetailsSkeleton />
       )}
     </DialogContent>
   )
