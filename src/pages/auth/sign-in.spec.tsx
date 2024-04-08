@@ -21,7 +21,7 @@ describe('SignIn', () => {
       }
     })
 
-    const emailInput = wrapper.getByLabelText('Seu e-mail') as HTMLInputElement
+    const emailInput = wrapper.getByLabelText('Seu email') as HTMLInputElement
 
     expect(emailInput.value).toEqual('johndoe@example.com')
   })
