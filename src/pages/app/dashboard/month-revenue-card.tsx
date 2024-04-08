@@ -5,6 +5,8 @@ import { DollarSign } from 'lucide-react'
 import { MetricCardSkeleton } from './metric-card-skeleton'
 
 export function MonthRevenueCard() {
+// throw new Error('Erro ao renderizar card!')
+
   const { data: monthRevenue } = useQuery({
     queryFn: getMonthRevenue,
     queryKey: ['metrics', 'month-revenue']
