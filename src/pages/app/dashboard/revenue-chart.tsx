@@ -1,4 +1,4 @@
-import { getDailyRevenueInPeriod } from '@/api/get-daily-revenue-and-period'
+import { getDailyRevenueInPeriod } from '@/api/get-daily-revenue-in-period'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { DateRangePicker } from '@/components/ui/data-range-picker'
 import { useQuery } from '@tanstack/react-query'

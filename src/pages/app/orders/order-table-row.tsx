@@ -3,7 +3,7 @@ import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { TableRow, TableCell } from '@/components/ui/table'
 import { ArrowRight, Search, X } from 'lucide-react'
 import { OrderDetails } from './order-details'
-import { OrderStatus } from './order-status'
+import { OrderStatus } from '../../../components/order-status'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { useState } from 'react'
@@ -81,14 +81,21 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
   return (
     <TableRow>
       <TableCell>
-        <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
+        <Dialog
+          open={isDetailsOpen}
+          onOpenChange={setIsDetailsOpen}>
           <DialogTrigger asChild>
-            <Button variant={'outline'} size={'xs'}>
+            <Button
+              variant={'outline'}
+              size={'xs'}>
               <Search size={12} />
               <span className='sr-only'>Detalhes do Pedido</span>
             </Button>
           </DialogTrigger>
-          <OrderDetails open={isDetailsOpen} orderId={order.orderId} />
+          <OrderDetails
+            open={isDetailsOpen}
+            orderId={order.orderId}
+          />
         </Dialog>
       </TableCell>
       <TableCell className='font-mono text-xs font-medium'>{order.orderId}</TableCell>
@@ -111,8 +118,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             onClick={() => approveOrderFn({ orderId: order.orderId })}
             disabled={isApprovingOrder}
             variant={'outline'}
-            size={'xs'}
-          >
+            size={'xs'}>
             <ArrowRight className='mr-2 h-3 w-3' />
             Aprovar
           </Button>
@@ -122,8 +128,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             onClick={() => dispatchOrderFn({ orderId: order.orderId })}
             disabled={isDispatchingOrder}
             variant={'outline'}
-            size={'xs'}
-          >
+            size={'xs'}>
             <ArrowRight className='mr-2 h-3 w-3' />
             Em entrega
           </Button>
@@ -133,8 +138,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             onClick={() => deliverOrderFn({ orderId: order.orderId })}
             disabled={isDeliveringOrder}
             variant={'outline'}
-            size={'xs'}
-          >
+            size={'xs'}>
             <ArrowRight className='mr-2 h-3 w-3' />
             Entregue
           </Button>
@@ -145,8 +149,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
           onClick={() => cancelOrderFn({ orderId: order.orderId })}
           disabled={!['pending', 'processing'].includes(order.status) || isCancelingOrder}
           variant={'ghost'}
-          size={'xs'}
-        >
+          size={'xs'}>
           <X className='mr-2 h-3 w-3' />
           Cancelar
         </Button>

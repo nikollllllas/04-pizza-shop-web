@@ -57,7 +57,7 @@ export function Pagination({ pageIndex, perPage, totalCount, onPageChange }: Pag
             disabled={pages <= pageIndex + 1}
           >
             <ChevronsRight className='h-4 w-4' />
-            <span className='sr-only'>Útlima página</span>
+            <span className='sr-only'>Última página</span>
           </Button>
         </div>
       </div>
